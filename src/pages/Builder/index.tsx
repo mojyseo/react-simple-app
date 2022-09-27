@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { Counter } from 'components/App';
+import Main from 'components/Builder/Main';
+import Sidebar from 'components/Builder/Sidebar';
 
 
 export default function Navbar({ routes }: any) {
@@ -7,14 +8,21 @@ export default function Navbar({ routes }: any) {
 
     return (
         <Container>
-            <header className="App-header">
-                <Counter />
-
-            </header>
+            <Main />
+            <Sidebar />
         </Container>
     );
 }
 
 const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 32px 7%;
 
+
+    .main {
+        width: calc(100% - 378px);
+        overflow-y:auto ;
+    }
 `

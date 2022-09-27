@@ -14,7 +14,7 @@ type CustomLinkProps = {
 }
 
 const CustomLink = styled(Link) <CustomLinkProps>`
-    padding: 16px 12px;
+    padding: 16px 20px;
     margin-right: 16px;
     text-decoration:none;color:#282828;
         ${({ isActive }) => isActive ?

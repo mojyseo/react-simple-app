@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route, createBrowserRouter, RouterProvider,
+  Route,
 } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ import Navbar from "components/Navbar";
 
 import Builder from "pages/Builder"
 
-import { routesTypes } from 'library/types';
+// import { routesTypes } from 'library/types';
 
 const routes = [
   {
