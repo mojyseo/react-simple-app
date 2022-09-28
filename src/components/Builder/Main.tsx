@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { stateToHTML } from 'draft-js-export-html';
 
-import { useAppSelector, } from 'app/hooks';
+import { useAppSelector } from 'app/hooks';
 import {
     getEditorState, getStyleMap
 } from 'app/features/appSlice';

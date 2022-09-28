@@ -5,14 +5,19 @@ import { RichUtils } from 'draft-js';
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 import {
     updateEditorState,
-    getEditorState, updateStyleMap
+    getEditorState,
+    updateStyleMap
 } from 'app/features/appSlice';
+import {
+    getMode
+} from 'app/features/themeSlice';
 
 export default function Main() {
     const colorRef: any = useRef(null)
     const sizeRef: any = useRef(null)
 
     const editorState = useAppSelector(getEditorState);
+    const mode = useAppSelector(getMode);
     const dispatch = useAppDispatch();
 
     function onColorChange(event: React.MouseEvent<HTMLElement>) {
@@ -30,7 +35,7 @@ export default function Main() {
 
 
     return (
-        <Container className="sidebar">
+        <Container className="sidebar" theme={mode}>
             <h3>Create Your Style!</h3>
 
             <div>
@@ -40,7 +45,7 @@ export default function Main() {
                     <button className="btn-dark"
                         onClick={onColorChange}
                     >
-                        save
+                        set
                     </button>
                 </div>
             </div>
@@ -52,7 +57,7 @@ export default function Main() {
                     <button className="btn-dark"
                         onClick={onSizeChange}
                     >
-                        save
+                        set
                     </button>
                 </div>
             </div>
@@ -66,7 +71,7 @@ const Container = styled.aside`
     border-radius: 10px;
     background: #000000b3;
     color: white;
-    box-shadow: 0px 4px 12px 4px rgb(31 38 135 / 37%);
+    box-shadow: 0px 4px 12px 4px ${({ theme }) => theme === 'dark' ? "#4f505c5e" : "#242a695e"} ;
     backdrop-filter: blur( 4px );
 h4 {
     font-weight:normal ;
