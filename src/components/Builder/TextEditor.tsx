@@ -68,6 +68,6 @@ const Container = styled.div<any>`
             }
             @media only screen and (max-width: 720px) {
                 height: 200px;
-            }
+            }   
 
 `
