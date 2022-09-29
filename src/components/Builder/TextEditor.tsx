@@ -1,13 +1,18 @@
-import { createRef } from "react"
+import {
+    createRef,
+    // useEffect
+} from "react"
 
 import styled from "styled-components"
 import { Editor, EditorState } from 'draft-js';
+// import { stateFromHTML } from 'draft-js-import-html';
 import 'draft-js/dist/Draft.css';
 
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 import {
     updateEditorState,
-    getEditorState, getStyleMap
+    getEditorState,
+    getStyleMap
 } from 'app/features/appSlice';
 
 
@@ -19,6 +24,20 @@ export default function Main() {
     const editorState = useAppSelector(getEditorState);
     const styleMap = useAppSelector(getStyleMap);
     const dispatch = useAppDispatch();
+
+
+    //load from localStorage
+    // useEffect(() => {
+    // let oldContent = (localStorage.getItem("content"))
+    // let styleMap = (localStorage.getItem("styleMap"))
+
+    // if (oldContent && styleMap) {
+
+    //     let options: any = { inlineStyles: JSON.parse(styleMap) }
+    //     dispatch(updateEditorState(EditorState.createWithContent(stateFromHTML(oldContent, options))))
+    // }
+    //eslint-disable-next-line
+    // }, [])
 
 
     function onEditorStateChange(e: EditorState) {
@@ -44,6 +63,7 @@ const Container = styled.div<any>`
     border-radius: 6px;
     font-size: 18px;
 
-    div.public-DraftStyleDefault-block {margin: 0 !important
+    div.public-DraftStyleDefault-block {
+        margin: 0 !important
             }
 `

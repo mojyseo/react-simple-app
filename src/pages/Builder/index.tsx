@@ -3,7 +3,7 @@ import Main from 'components/Builder/Main';
 import Sidebar from 'components/Builder/Sidebar';
 
 
-export default function Navbar({ routes }: any) {
+export default function Builder() {
 
 
     return (

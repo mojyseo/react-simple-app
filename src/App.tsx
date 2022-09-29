@@ -11,6 +11,7 @@ import './App.css';
 import Navbar from "components/Navbar";
 
 import Builder from "pages/Builder"
+import Content from "pages/Content"
 
 import { useAppSelector } from 'app/hooks';
 import {
@@ -32,7 +33,7 @@ const routes = [
   {
     title: "content",
     link: '/content',
-    element: <Builder />
+    element: <Content />
   },
 ]
 
