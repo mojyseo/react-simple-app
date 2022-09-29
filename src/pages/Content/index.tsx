@@ -15,4 +15,7 @@ export default function Content() {
 
 const Container = styled.div`
     padding: 32px 8%;
+    span span {
+        color:inherit !important;
+    }
 `

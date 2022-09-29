@@ -17,11 +17,7 @@ const initialState: appState = {
     fontSize: "16px",
     color: "#000",
     editorState: EditorState.createEmpty(),
-    styleMap: {
-        'RED': {
-            color: '#111',
-        },
-    },
+    styleMap: {},
     status: 'idle',
 };
 

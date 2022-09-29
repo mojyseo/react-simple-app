@@ -20,12 +20,13 @@ export default function Main() {
     const mode = useAppSelector(getMode);
     const dispatch = useAppDispatch();
 
-    function onColorChange(event: React.MouseEvent<HTMLElement>) {
+    function onColorChange() {
         let newColor = (colorRef?.current?.value);
         dispatch(updateStyleMap({ [newColor]: { color: newColor } }))
         dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, newColor)))
+
     }
-    function onSizeChange(event: React.MouseEvent<HTMLElement>) {
+    function onSizeChange() {
         let newSize = (sizeRef?.current?.value);
         console.log(newSize)
 
