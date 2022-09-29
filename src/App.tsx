@@ -12,6 +12,7 @@ import Navbar from "components/Navbar";
 
 import Builder from "pages/Builder"
 import Content from "pages/Content"
+import Biography from "pages/Biography"
 
 import { useAppSelector } from 'app/hooks';
 import {
@@ -23,7 +24,7 @@ const routes = [
   {
     title: "biography",
     link: '/',
-    element: <></>
+    element: <Biography />
   },
   {
     title: 'builder',

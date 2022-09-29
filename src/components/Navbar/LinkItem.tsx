@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-type PropertiesType = { isActive?: boolean, title: string, link: string, mode: string };
+type PropertiesType = { isactive?: string | undefined, title: string, link: string, mode: string };
 
-export default function LinkItem({ isActive, title, link, mode }: PropertiesType) {
-    return <CustomLink theme={mode} isActive={!!isActive} to={link}>{title}</CustomLink>;
+export default function LinkItem({ isactive, title, link, mode }: PropertiesType) {
+    return <CustomLink theme={mode} isactive={isactive} to={link}>{title}</CustomLink>;
 }
 
 type CustomLinkProps = {
-    isActive: boolean,
+    isactive: string | undefined,
     to: any,
     theme: string,
 
@@ -19,7 +19,7 @@ const CustomLink = styled(Link) <CustomLinkProps>`
     margin-right: 16px;
     text-decoration:none;
   color: ${({ theme }) => theme === "dark" ? '#fff' : "#282828"};
-        ${({ isActive, theme }) => isActive ?
+        ${({ isactive, theme }) => isactive ?
         `
     color: ${theme === "dark" ? '#282828' : "#fff"};
     background: ${theme === "dark" ? '#ececec' : "#393939"};

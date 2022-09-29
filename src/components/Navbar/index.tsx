@@ -26,7 +26,7 @@ export default function Navbar({ routes }: PropertiesType) {
     <Container>
       <LinksContainer>
         {routes?.map((item: any, key: number) => (
-          <LinkItem mode={mode} isActive={item.link === location.pathname} title={item.title} link={item.link} key={key} />
+          <LinkItem mode={mode} isactive={item.link === location.pathname ? "true" : undefined} title={item.title} link={item.link} key={key} />
         ))}
       </LinksContainer>
       <ToggleButton onClick={toggleTheme} >
