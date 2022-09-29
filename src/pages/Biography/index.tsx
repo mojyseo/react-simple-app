@@ -81,6 +81,7 @@ const Container = styled.main`
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 8px;
 }
 
 .close {

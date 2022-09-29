@@ -26,9 +26,7 @@ export default function Main() {
                     }
                 }
             });
-            console.log(1, stateToHTML(content, { inlineStyles: newStyleMap }))
-            console.log(2, editorState?.getCurrentContent())
-            console.log(3, editorState)
+
             localStorage.setItem('content', stateToHTML(content, { inlineStyles: newStyleMap }));
             // localStorage.setItem('styleMap', JSON.stringify(styleMap));
             alert("content has been saved!")

@@ -20,9 +20,17 @@ const Container = styled.div`
     flex-direction: row-reverse;
     padding: 32px 7%;
 
-
     .main {
         width: calc(100% - 378px);
         overflow-y:auto ;
     }
+    @media only screen and (max-width: 720px) {
+    flex-direction: column;
+        .main {
+        width: 100%;
+        height:240px ;
+        overflow-y:visible ;
+    }
+}
+
 `

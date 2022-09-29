@@ -66,4 +66,8 @@ const Container = styled.div<any>`
     div.public-DraftStyleDefault-block {
         margin: 0 !important
             }
+            @media only screen and (max-width: 720px) {
+                height: 200px;
+            }
+
 `
