@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -9,6 +9,7 @@ type state = {
     bio: string;
 };
 class Biography extends React.Component<propsType, state> {
+    modalRef: any = createRef();
     state: state = {
         // optional second annotation for better type inference
         fullName: "Mojtaba Madadi",
@@ -25,6 +26,10 @@ class Biography extends React.Component<propsType, state> {
      and It's a good day for me when i learn or create something new!
       `,
     };
+
+    closeModal = () => {
+        this.modalRef.current.style.display = "none";
+    }
     render() {
         const { fullName, bio, } = this.state
         return (
@@ -33,6 +38,17 @@ class Biography extends React.Component<propsType, state> {
                 <h2>And this is my biography</h2>
                 <br />
                 <p>{ReactHtmlParser(bio)}</p>
+
+                <div ref={this.modalRef} className="modal">
+
+                    <div className="modal-content">
+                        <span onClick={this.closeModal} className="close">&times;</span>
+                        <h3>My contact info: </h3>
+                        <p>Email: mojyseo@gmail.com</p>
+                        <p>phone: +989117911780</p>
+                    </div>
+
+                </div>
             </Container>
         );
     }
@@ -43,6 +59,44 @@ const Container = styled.main`
     p { 
         font-size:24px;
     }
-`
+    
+    .modal {
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+  color:#000; 
+
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+    `
 
 export default Biography;
