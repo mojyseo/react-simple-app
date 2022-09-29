@@ -3,15 +3,15 @@ import {
     RootState,
     // AppThunk
 } from 'app/store';
+const localMode = localStorage.getItem("theme") || "dark"
 
 export interface themeState {
 
-    mode: 'dark' | 'light';
+    mode: string
 }
-
 const initialState: themeState = {
 
-    mode: 'light',
+    mode: localMode,
 };
 
 

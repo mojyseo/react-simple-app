@@ -19,6 +19,7 @@ export default function Navbar({ routes }: PropertiesType) {
   const dispatch = useAppDispatch();
 
   function toggleTheme() {
+    localStorage.setItem('theme', mode)
     dispatch(toggleMode())
   }
 
