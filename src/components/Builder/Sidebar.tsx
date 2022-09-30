@@ -21,17 +21,60 @@ export default function Main() {
     const dispatch = useAppDispatch();
 
     function onColorChange() {
-        let newColor = (colorRef?.current?.value);
-        dispatch(updateStyleMap({ [newColor]: { color: newColor } }))
-        dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, newColor)))
 
+
+        let newColor = (colorRef?.current?.value);
+        let newList: any = [];
+        editorState.getCurrentInlineStyle().map((item: any, key: any) => {
+            newList.push(item)
+            return item
+        });
+        newList.reverse();
+        newList.find((item: any) => item.split('')[0] === "#")
+
+        let latestFont: string | null = null;
+        newList?.length && newList.forEach((item: any) => {
+            let isColor = item.split('')[0] === "#";
+            if (latestFont === null && isColor) {
+                latestFont = item;
+            }
+        })
+
+        if (latestFont) {
+            dispatch(updateStyleMap({ [`FONT${latestFont}COLOR${newColor}`]: { fontSize: `${latestFont}px`, color: newColor } }))
+            dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, `FONT${latestFont}COLOR${newColor}`)))
+        } else {
+            dispatch(updateStyleMap({ [newColor]: { color: newColor } }))
+            dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, newColor)))
+        }
     }
     function onSizeChange() {
         let newSize = (sizeRef?.current?.value);
-        console.log(newSize)
+        let newList: any = [];
+        editorState.getCurrentInlineStyle().map((item: any, key: any) => {
+            newList.push(item)
+            return item
+        });
+        newList.reverse();
+        newList.find((item: any) => item.split('')[0] === "#")
 
-        dispatch(updateStyleMap({ [`FONT${newSize}`]: { fontSize: `${newSize}px` } }))
-        dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, `FONT${newSize}`)))
+        let latestColor: string | null = null;
+        newList?.length && newList.forEach((item: any) => {
+            let isColor = item.split('')[0] === "#";
+            if (latestColor === null && isColor) {
+                latestColor = item;
+            }
+        })
+
+        if (latestColor) {
+            dispatch(updateStyleMap({ [`FONT${newSize}COLOR${latestColor}`]: { fontSize: `${newSize}px`, color: latestColor } }))
+            dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, `FONT${newSize}COLOR${latestColor}`)))
+        } else {
+            dispatch(updateStyleMap({ [`FONT${newSize}`]: { fontSize: `${newSize}px` } }))
+            dispatch(updateEditorState(RichUtils.toggleInlineStyle(editorState, `FONT${newSize}`)))
+        }
+
+
     }
 
 
